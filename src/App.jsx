@@ -1,9 +1,26 @@
 import React from 'react'
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Layout from './Pages/Layout'
+import Home from './Pages/Home'
+import Mens from './Pages/Mens'
+import Womens from './Pages/Womens'
+import Contact from './Pages/Contact'
 function App() {
   return (<>
-  <h1>This is my addtocart</h1>
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Layout/>}>
+        <Route index element={<Home/>}/>
+        <Route path='home' element={<Home/>}/>
+        <Route path='mens' element={<Mens/>}/>
+        <Route path='womens' element={<Womens/>}/>
+        <Route path='contact' element={<Contact/>}/>
+
+      </Route>
+    </Routes>
+  </BrowserRouter>
   
+
   </>
   )
 }
