@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import { Outlet,Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Outlet,Link, useNavigate } from 'react-router-dom'
 import Footer from './Footer'
-import mycart from "../images/cart.png"
+import mycart from "../optimized-images/cart.webp"
+import { useSelector } from 'react-redux'
 function Layout() {
-    const [cartCount, setCartCount] = useState(0);
-
-  const addToCart = () => {
-    setCartCount(cartCount + 1);
-  };
+  const navigate=useNavigate()
+  let cart=useSelector((state)=>state.myreducer.cart)
+   let length=cart.length;
+ 
   return (<>
     {/* navbar */}
- <nav className="w-full bg-white shadow-md border-b border-gray-200 px-6 py-4 flex items-center justify-between ">
+ <nav className="sticky top-0 z-50 w-full bg-white shadow-md border-b border-gray-200 px-6 py-4 flex items-center justify-between  ">
 
   {/* Logo */}
   <div className="text-2xl font-bold text-gray-900">
@@ -53,10 +53,10 @@ function Layout() {
             src={mycart}
             alt="Shopping Cart"
             className="w-15 h-10 object-contain"
-          />
+          onClick={()=>{navigate("/mycart")}}/>
 
           {/* Count Badge */}
-          {cartCount > 0 && (
+          {length > 0 && (
             <span className="
               absolute
               -top-2
@@ -72,7 +72,7 @@ function Layout() {
               items-center
               justify-center
             ">
-              {cartCount}
+              {length}
             </span>
           )}
 

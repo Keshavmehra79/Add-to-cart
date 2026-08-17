@@ -5,6 +5,7 @@ import Home from './Pages/Home'
 import Mens from './Pages/Mens'
 import Womens from './Pages/Womens'
 import Contact from './Pages/Contact'
+import Mycart from './Pages/Mycart'
 function App() {
   return (<>
   <BrowserRouter>
@@ -15,10 +16,12 @@ function App() {
         <Route path='mens' element={<Mens/>}/>
         <Route path='womens' element={<Womens/>}/>
         <Route path='contact' element={<Contact/>}/>
+        <Route path='mycart' element={<Mycart/>}/>
 
       </Route>
     </Routes>
   </BrowserRouter>
+
   
 
   </>
