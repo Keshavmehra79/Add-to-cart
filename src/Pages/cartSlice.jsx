@@ -18,10 +18,19 @@ import { createSlice } from "@reduxjs/toolkit";
                 }
             }
         },
-        decreItem:(state,actions)
+        decreItem:(state,actions)=>{
+            for(let i=0;i<state.cart.length;i++){
+                if (state.cart[i].id==actions.payload.id){
+                       if(state.cart[i].qnty==1){
+                           return
+                       }
+                        state.cart[i].qnty--;
+                }
+            }
+        }
     }
 
  })
 
- export const {addtoCart,removeItem,increItem}=cartSlice.actions;
+ export const {addtoCart,removeItem,increItem,decreItem}=cartSlice.actions;
  export default cartSlice.reducer

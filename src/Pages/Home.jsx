@@ -14,7 +14,11 @@ import whiteshoes from "../optimized-images/white-shoes-mens.webp"
 import womensstlyes from "../optimized-images/black-womens-juti.webp"
 import { useDispatch } from 'react-redux'
 import { addtoCart } from './cartSlice'
+import { useNavigate } from 'react-router-dom'
 function Home() {
+
+
+
 const products = [
     { id:1,
       name: "Premium Denim Flat",
@@ -124,8 +128,18 @@ const products = [
     }
   ];
 
+
+  
+
+  const navigate=useNavigate()
 const dispatch=useDispatch()
-  return (<>  <header className="w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white">
+  return (<> 
+         
+
+
+  
+  
+   <header className="w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white">
   <div className="max-w-7xl mx-auto px-6 py-20 flex items-center justify-between">
 
     {/* Left Content */}
@@ -146,11 +160,11 @@ const dispatch=useDispatch()
       </p>
 
       <div className="flex gap-4">
-        <button className="bg-blue-600 hover:bg-blue-700 cursor-pointer px-7 py-3 rounded-lg font-semibold transition duration-300 shadow-lg">
+        <button onClick={()=>{navigate("/goback")}} className="bg-blue-600 hover:bg-blue-700 cursor-pointer px-7 py-3 rounded-lg font-semibold transition duration-300 shadow-lg">
           Shop Now
         </button>
 
-        <button className="border border-gray-500 hover:border-white cursor-pointer hover:bg-white hover:text-gray-900 px-7 py-3 rounded-lg font-semibold transition duration-300">
+        <button onClick={()=>{navigate("/goback")}} className="border border-gray-500 hover:border-white cursor-pointer hover:bg-white hover:text-gray-900 px-7 py-3 rounded-lg font-semibold transition duration-300">
           Explore Collection
         </button>
       </div>
