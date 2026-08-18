@@ -1,15 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
+const savedCart = localStorage.getItem("cart");
  const cartSlice=createSlice({
     name:"mycart",
     initialState:{
-        cart:[]
+        cart:savedCart ? JSON.parse(savedCart) : [],
     },
     reducers:{
         addtoCart:(state,actions)=>{
+                for(let i=0;i<state.cart.length;i++){
+                if(state.cart[i].id==actions.payload.id){
+                   alert("Product Already Added")
+                   return
+                }
+            }
             state.cart.push(actions.payload)
+
+      localStorage.setItem("cart",
+        JSON.stringify(state.cart)
+      );
+
         },
         removeItem:(state,actions)=>{
             state.cart=state.cart.filter((item)=>item.id!=actions.payload.id)
+             localStorage.setItem("cart",
+        JSON.stringify(state.cart));
         },
         increItem:(state,actions)=>{
             for(let i=0;i<state.cart.length;i++){
@@ -17,6 +31,11 @@ import { createSlice } from "@reduxjs/toolkit";
                     state.cart[i].qnty++;
                 }
             }
+
+            localStorage.setItem(
+        "cart",
+        JSON.stringify(state.cart)
+      );
         },
         decreItem:(state,actions)=>{
             for(let i=0;i<state.cart.length;i++){
@@ -27,8 +46,15 @@ import { createSlice } from "@reduxjs/toolkit";
                         state.cart[i].qnty--;
                 }
             }
+             localStorage.setItem(
+        "cart",
+        JSON.stringify(state.cart)
+      );
+
         }
+
     }
+
 
  })
 
