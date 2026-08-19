@@ -24,7 +24,7 @@ function Mycart() {
                 <thead>
                   <tr className="bg-gray-200 text-gray-700">
                     <th className="p-3">Image</th>
-                    <th className="p-3">Food</th>
+                    <th className="p-3">Product</th>
                     <th className="p-3">Description</th>
                     <th className="p-3">Price</th>
                     <th className="p-3">Quantity</th>
@@ -34,7 +34,6 @@ function Mycart() {
 
                 <tbody>
                   {cart.map((item) =>{
-                     let totalamount=0;
                    return(
                      
                     <tr
@@ -44,13 +43,13 @@ function Mycart() {
                       <td className="p-3">
                         <img
                           src={item.image}
-                          alt={item.foodname}
+                          alt={item.name}
                           className="h-16 w-16 object-cover rounded-lg mx-auto"
                         />
                       </td>
 
                       <td className="p-3 font-semibold">
-                        {item.foodname} 
+                        {item.name} 
                       </td>
 
                       <td className="p-3 text-gray-500">
@@ -126,5 +125,7 @@ function Mycart() {
   </>
   )
 }
+////Now my Project is ready to deploy
+
 
 export default Mycart
